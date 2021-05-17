@@ -33,7 +33,7 @@ let run () =
 
     // create a controlled camera using the window mouse and keyboard input devices
     // the window also provides a so called time mod, which serves as tick signal to create
-    // animations - seealso: https://github.com/aardvark-platform/aardvark.docs/wiki/animation
+    // animations
     let cameraView = DefaultCameraController.control win.Mouse win.Keyboard win.Time initialView
     
     let modelPath = Path.combine [__SOURCE_DIRECTORY__; ".."; ".."; "data"; "aardvark"; "aardvark.obj" ]
@@ -70,7 +70,6 @@ let run () =
                         let highDetail = Sg.lod (lodDecider 2.0) (Sg.unitSphere 3 ~~C4b.Red) aardvark
                         yield 
                             Sg.lod (lodDecider 5.0) (Sg.box ~~C4b.Red ~~(Box3d.FromCenterAndSize(V3d.OOO,V3d.III*2.0))) highDetail
-                            //|> Sg.diffuseFileTexture' @"C:\Aardwork\pattern.jpg" true // use this line to load texture from file
                             |> Sg.diffuseTexture DefaultTextures.checkerboard
                             |> Sg.scale 0.4
                             |> Sg.translate x y 0.0
